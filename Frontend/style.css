@@ -94,6 +94,7 @@ h2 {
 }
 
 .services {
+  padding-top: 2rem;
   max-width: 90%;
   margin: auto;
 }
@@ -106,8 +107,6 @@ h2 {
 .services p {
   width: 70%;
   margin: auto;
-  text-align: center;
-  align-items: center;
 }
 
 .services img {
@@ -131,4 +130,7 @@ h2 {
   width: 50%;
   margin: auto;
   text-align: center;
+}
+
+.more {
 }
