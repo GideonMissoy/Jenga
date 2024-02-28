@@ -134,3 +134,25 @@ h2 {
 
 .more {
 }
+
+.Partners {
+  width: 60%;
+  margin: auto;
+  align-items: center;
+}
+.Partners ul {
+  margin: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.Partners li {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  text-align: center;
+}
+.Partners img {
+  height: 45px;
+  border-radius: 0.5px;
+}
