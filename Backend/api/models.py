@@ -77,6 +77,11 @@ class User(AbstractBaseUser):
         return self.is_admin   
 
 
+class Profile(models.Model):
+    summary = models.TextField(required=True)
+    profile_img = models.ImageField(null=True)
+
+
 class Project(models.Model):
     STATUS_CHOICES = (
         ('Open', 'Open'),
@@ -106,3 +111,9 @@ class Bid(models.Model):
 
     def __str__(self):
         return f"Bid for {self.project.title} by {self.bidder.username}"
+    
+
+class Reviews(models.Model):
+    Project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.TextField()

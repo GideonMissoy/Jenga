@@ -1,6 +1,6 @@
 from django.db.models.fields import SlugField
 from rest_framework import serializers
-from .models import Project, Bid, User
+from .models import Project, Bid, User, Profile, Reviews
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -24,6 +24,18 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
+class ReviewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reviews
+        fields = '__all__'
+        
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
