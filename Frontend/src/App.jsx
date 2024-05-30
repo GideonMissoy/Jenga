@@ -1,21 +1,21 @@
-import react from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import About from './pages/About';
-import Buying from './pages/Buying';
-import Contact from './pages/Contact';
-import Contractors from './pages/Contractors';
-import Index from "./pages/Index";
+import react from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import About from './pages/Home/About';
+import Buying from './pages/Hiring/Buying';
+import Contact from './pages/Home/Contact';
+import Contractors from './pages/Hiring/Contractors';
+import Index from './pages/Home/Index';
 import Profile from './pages/Profile';
 import Project from './pages/Project';
 import Projects from './pages/Projects';
-import NotFound from "./pages/NotFound";
-import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function Logout() {
   localStorage.clear();
-  return <Navigate to="/login" />;
+  return <Navigate to='/login' />;
 }
 
 function RegisterAndLogout() {
@@ -28,7 +28,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/contractors"
+          path='/contractors'
           element={
             <ProtectedRoute>
               <Contractors />
@@ -36,7 +36,7 @@ function App() {
           }
         />
         <Route
-          path="/buying"
+          path='/buying'
           element={
             <ProtectedRoute>
               <Buying />
@@ -44,7 +44,7 @@ function App() {
           }
         />
         <Route
-          path="/selling"
+          path='/selling'
           element={
             <ProtectedRoute>
               <Selling />
@@ -52,7 +52,7 @@ function App() {
           }
         />
         <Route
-          path="/profile"
+          path='/profile'
           element={
             <ProtectedRoute>
               <Profile />
@@ -60,7 +60,7 @@ function App() {
           }
         />
         <Route
-          path="/projects"
+          path='/projects'
           element={
             <ProtectedRoute>
               <Projects />
@@ -68,20 +68,20 @@ function App() {
           }
         />
         <Route
-          path="/project/<int:pk>"
+          path='/project/<int:pk>'
           element={
             <ProtectedRoute>
               <Project />
             </ProtectedRoute>
           }
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/register" element={<RegisterAndLogout />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/" element={<Index />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path='/login' element={<Login />} />
+        <Route path='/logout' element={<Logout />} />
+        <Route path='/register' element={<RegisterAndLogout />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/' element={<Index />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -78,7 +78,7 @@ class User(AbstractBaseUser):
 
 
 class Profile(models.Model):
-    summary = models.TextField(required=True)
+    summary = models.TextField(null=False)
     profile_img = models.ImageField(null=True)
 
 
