@@ -51,21 +51,21 @@ class UserAdmin(BaseUserAdmin):
     add_form = UserCreationForm
 
     list_display = ('email', 'first_name', 'last_name', 'is_admin')
-    list_filter = ('email')
-    fieldsets = (
+    list_filter = ['email']
+    fieldsets = [
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': 'is_admin'}),
-    )
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
+    ]
 
-    add_fieldsets = (
+    add_fieldsets = [
         (None, {
             'classes': 'wide',
             'fields': ('email', 'first_name', 'last_name', 'password1', 'password2'),
         }),
-    )
+    ]
     search_fields = ('email', 'first_name', 'last_name')
-    ordering = ('email')
+    ordering = ['email']
     filter_horizontal = ()
 
 admin.site.register(User, UserAdmin)

@@ -76,6 +76,7 @@ function App() {
           }
         />
         <Route path='/login' element={<Login />} />
+        <Route path='/index' element={<Index />} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/register' element={<RegisterAndLogout />} />
         <Route path='/about' element={<About />} />
