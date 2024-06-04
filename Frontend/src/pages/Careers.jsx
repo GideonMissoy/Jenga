@@ -32,12 +32,12 @@ export default function Careers() {
             />
           </div>
         </div>
-        <div className='mx-3 lg:mx-11'>
+        <div className='mx-3 lg:mx-11 '>
           <h1 className='text-2xl lg:text-6xl text-pink-800'>
             <span>Get in Touch</span>
             <hr className='border-pink-800' />{' '}
           </h1>
-          <div className='flex flex-col lg:flex-row'>
+          <div className='flex flex-col lg:flex-row p-3 bg-slate-200'>
             <div className='w-full lg:w-1/2 lg:p-7'>
               <p>
                 Contact our HR team to find out the open positions in Jenga
@@ -49,7 +49,7 @@ export default function Careers() {
                 its staff at all times.
               </p>
             </div>
-            <div className='w-full lg:w-1/2 lg:p-5'>
+            <div className='w-full lg:w-1/2 lg:p-5 bg-slate-900 text-white'>
               <div className='flex align-center text-center justify-between py-2'>
                 <div className='flex'>
                   {/* <FaLocationDot size={25} className='text-pink-600' /> */}
