@@ -11,10 +11,10 @@ function Nav() {
         <div>
           <ul className='flex flex-row'>
             <li className='px-2 lg:px-5 py-2 hover:bg-slate-800 rounded-full mr-2'>
-              <Link to='/about'>About Us</Link>
+              <Link to='/about'>About</Link>
             </li>
             <li className='px-2 lg:px-5 py-2 hover:bg-slate-800 rounded-full mr-2'>
-              <Link to='/contact'>Contact Us</Link>
+              <Link to='/contact'>Contact</Link>
             </li>
             <li className='px-2 lg:px-5 py-2 hover:bg-slate-800 rounded-full'>
               <Link to='/careers'>Careers</Link>

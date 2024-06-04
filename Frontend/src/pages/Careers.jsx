@@ -6,10 +6,93 @@ export default function Careers() {
   return (
     <div>
       <Nav />
-      <h1>This is the Careers page.</h1>
-      <p>
-        It contains all the information about the career opportunities at Jenga.
-      </p>
+      <div className='mx-2 my-y lg:mx-11 lg:my-11 lg:px-11 '>
+        <div>
+          <h1 className='text-2xl lg:text-6xl font-bold text-green-600'>
+            Join us as we
+          </h1>
+          <h2 className='text-1xl lg:text-3xl font-bold text-green-700'>
+            revolutionize the Construction space
+          </h2>
+        </div>
+        <div className='flex flex-col lg:flex-row my-5 lg:my-11'>
+          <div className='w-full lg:w-1/3 px-3 flex flex-col my-3 lg:mr-5 lg:my-0 lg:justify-center'>
+            <h1 className='lg:text-5xl text-2xl font-bold'>
+              Become a part of Jenga
+            </h1>
+            <p className='lg:my-3 lg:text-2xl font-bold text-grey-800'>
+              Be part of the team that brings this vision to life
+            </p>
+          </div>
+          <div className='w-full lg:w-2/3'>
+            <img
+              src='https://plus.unsplash.com/premium_photo-1661301167646-d28bbf327e65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ1fHxjb25zdHJ1Y3Rpb24lMjBzaXRlfGVufDB8fDB8fHww'
+              alt='Sample Photo'
+              className='rounded-3xl'
+            />
+          </div>
+        </div>
+        <div className='mx-3 lg:mx-11'>
+          <h1 className='text-2xl lg:text-6xl text-pink-800'>
+            <span>Get in Touch</span>
+            <hr className='border-pink-800' />{' '}
+          </h1>
+          <div className='flex flex-col lg:flex-row'>
+            <div className='w-full lg:w-1/2 lg:p-7'>
+              <p>
+                Contact our HR team to find out the open positions in Jenga
+                right now. You will be provided with our contract roles and the
+                terms of service
+              </p>
+              <p>
+                Jenga Aims to foster a great conducive working environment for
+                its staff at all times.
+              </p>
+            </div>
+            <div className='w-full lg:w-1/2 lg:p-5'>
+              <div className='flex align-center text-center justify-between py-2'>
+                <div className='flex'>
+                  {/* <FaLocationDot size={25} className='text-pink-600' /> */}
+                  <span className='ml-2 lg:ml-4 text-1xl lg:text-2xl'>
+                    Address
+                  </span>
+                </div>
+                <div>
+                  <span className='justify-end text-green-500 text-1xl lg:text-2xl'>
+                    Nairobi, Kenya
+                  </span>
+                </div>
+              </div>
+              <div className='flex align-center text-center justify-between py-2'>
+                <div className='flex'>
+                  {/* <MdEmail /> */}
+                  <span className='ml-2 lg:ml-4 text-1xl lg:text-2xl'>
+                    Email
+                  </span>
+                </div>
+                <div>
+                  <span className='justify-end text-green-500 text-1xl lg:text-2xl'>
+                    gideon.missoy@gmail.com
+                  </span>
+                </div>
+              </div>
+              <div className='flex align-center text-center  justify-between py-2'>
+                <div className='flex'>
+                  {/* <FaPhoneFlip size={25} className='text-pink-600' /> */}
+                  <span className='ml-2 lg:ml-4 text-1xl lg:text-2xl'>
+                    Phone Number
+                  </span>
+                </div>
+                <div>
+                  <span className='justify-end text-green-500 text-1xl lg:text-2xl'>
+                    +254704158777
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );
