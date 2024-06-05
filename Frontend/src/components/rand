@@ -1,0 +1,37 @@
+<div className='flex flex-row'>
+              <FaLocationDot size={37} className='text-pink-600' />
+              <h1 className='px-3'>Address</h1>
+              <div>
+                <h2>
+                  Jenga Plaza, <br /> 2136 Haille Sellasie Avenue, <br />
+                  Nairobi, Kenya.
+                </h2>
+              </div>
+            </div>
+            <div className='flex flex-row'>
+              <MdEmail size={37} className='text-pink-600' />
+              <h1 className='px-3'>Email</h1>
+              <div>
+                <h2 className='flex justify-between'>
+                  Inquiries{' '}
+                  <span className='text-green-500'>inquiries@jenga.com</span>
+                </h2>
+                <h2 className='flex items-between'>
+                  Support{' '}
+                  <span className='text-green-500'>support@jenga.com</span>
+                </h2>
+              </div>
+            </div>
+            <div className='flex flex-row'>
+              <FaPhoneFlip size={37} className='text-pink-600' />
+              <h1 className='px-3'>Phone</h1>
+              <div>
+                <h2 className='flex justify-between'>
+                  Landline:{' '}
+                  <span className='text-green-500'>+254712136452</span>
+                </h2>
+                <h2 className='flex justify-between'>
+                  Mobile: <span className='text-green-500'>+254743611343</span>
+                </h2>
+              </div>
+            </div>
