@@ -9,7 +9,7 @@ function Contact() {
   return (
     <div>
       <Nav />
-      <div className='m-3 lg:m-11'>
+      <div className='m-3 lg:m-11 pb-5'>
         <div className='flex flex-col items-center'>
           <h1 className='text-2xl lg:text-6xl text-green-600 font-bold'>
             Contact Us
