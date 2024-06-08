@@ -3,6 +3,7 @@ import Nav from '../components/nav';
 import Footer from '../components/footer';
 import CityView from '../assets/cityview.jpg';
 import Tickbrush from '../assets/jengatick.jpg';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -79,12 +80,12 @@ function Home() {
             contractors. Right here. Right now!
           </p>
           <div className='mb-3'>
-            <a
-              href='#'
+            <Link
+              to='/register'
               className='bg-green-600 text-white py-2 px-3 lg:px-5 font-bold rounded-full'
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
         <div className='w-full lg:w-1/2 lg:pl-11'>

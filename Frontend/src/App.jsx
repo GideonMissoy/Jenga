@@ -7,12 +7,9 @@ import {
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
+import About from './pages/About';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
-import About from './pages/About';
-import Nav from './components/nav';
-import Footer from './components/footer';
-
 // function Logout() {
 //   localStorage.clear();
 //   return <Navigate to='/login' />;
