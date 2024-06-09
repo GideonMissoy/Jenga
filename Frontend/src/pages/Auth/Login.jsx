@@ -1,8 +1,38 @@
-import React from 'react';
+import { useState } from 'react';
+import api from '../api';
+import { useNavigate } from 'react-router-dom';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 import { Link } from 'react-router-dom';
 import { FaLock, FaWindowClose, FaEnvelope } from 'react-icons/fa';
 
 function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const name = method === 'login' ? 'Login' : 'Register';
+
+  const handleLogin = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    try {
+      const res = await api.post(route, { username, password });
+      if (method === 'login') {
+        localStorage.setItem(ACCESS_TOKEN, res.data.access);
+        localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+        navigate('/');
+      } else {
+        navigate('/login');
+      }
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <div className='flex flex-col justify-center items-center h-screen w-screen text-slate-800'>
@@ -12,13 +42,15 @@ function Login() {
               <FaWindowClose size={25} />
             </Link>
           </div>
-          <form className='flex flex-col'>
+          <form onSubmit={handleLogin} className='flex flex-col'>
             <h1 className='text-2xl font-bold mb-4'>Login</h1>
             <div className='space-y-4'>
               <div className='flex flex-row items-center border border-gray-300 rounded-md px-3 py-2'>
                 <input
                   type='email'
                   placeholder='Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -28,6 +60,8 @@ function Login() {
                 <input
                   type='password'
                   placeholder='Password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />

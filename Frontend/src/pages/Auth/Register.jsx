@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaUser,
@@ -9,6 +9,30 @@ import {
 } from 'react-icons/fa';
 
 function Register() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      console.error("Passwords don't match");
+      return;
+    }
+    // Process to handle the registration logic
+    console.log('New user registered successfully.', {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      password,
+    });
+  };
+
   return (
     <div>
       <div className='absolute flex flex-col justify-center items-center h-screen w-screen text-slate-800'>
@@ -18,7 +42,7 @@ function Register() {
               <FaWindowClose size={25} />
             </Link>
           </div>
-          <form className='flex flex-col'>
+          <form onSubmit={handleRegister} className='flex flex-col'>
             <h1 className='text-2xl lg:text-4xl font-bold mb-4'>Sign Up</h1>
             <hr className='font-pink-700' />
             <div className='space-y-4'>
@@ -26,6 +50,8 @@ function Register() {
                 <input
                   type='text'
                   placeholder='First Name'
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -35,6 +61,8 @@ function Register() {
                 <input
                   type='text'
                   placeholder='Last Name'
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -44,6 +72,8 @@ function Register() {
                 <input
                   type='text'
                   placeholder='Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -53,6 +83,8 @@ function Register() {
                 <input
                   type='text'
                   placeholder='Phone Number'
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -62,6 +94,8 @@ function Register() {
                 <input
                   type='password'
                   placeholder='Password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -71,6 +105,8 @@ function Register() {
                 <input
                   type='password'
                   placeholder='Confirm Password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   className='flex-grow outline-none'
                 />
@@ -82,6 +118,7 @@ function Register() {
                   and conditions.
                 </label>
               </div>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
               <div className='flex justify-center'>
                 <button
                   type='submit'
