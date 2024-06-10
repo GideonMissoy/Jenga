@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../../api';
 import {
   FaUser,
   FaLock,
@@ -15,22 +17,32 @@ function Register() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
   const [error, setError] = useState('');
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       console.error("Passwords don't match");
       return;
     }
     // Process to handle the registration logic
-    console.log('New user registered successfully.', {
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      password,
-    });
+    try {
+      let response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/user/register/`,
+        {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone_no: phoneNumber,
+          password: password,
+        }
+      );
+      console.log(response);
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -118,7 +130,7 @@ function Register() {
                   and conditions.
                 </label>
               </div>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
+              {error && <p className='text-red-500'>{error}</p>}
               <div className='flex justify-center'>
                 <button
                   type='submit'
@@ -132,7 +144,7 @@ function Register() {
                   Already have an account?
                   <Link
                     to='/login'
-                    className='text-blue-500 hover:underline ml-1'
+                    className='text-red-500 hover:underline ml-1'
                   >
                     Login.
                   </Link>

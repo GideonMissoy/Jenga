@@ -8,28 +8,33 @@ import { FaLock, FaWindowClose, FaEnvelope } from 'react-icons/fa';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const name = method === 'login' ? 'Login' : 'Register';
-
   const handleLogin = async (e) => {
-    setLoading(true);
     e.preventDefault();
 
     try {
-      const res = await api.post(route, { username, password });
-      if (method === 'login') {
-        localStorage.setItem(ACCESS_TOKEN, res.data.access);
-        localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-        navigate('/');
+      const res = await api.post(`${import.meta.env.VITE_API_URL}/token/`, {
+        email: email,
+        password: password,
+      });
+
+      // Assuming that successful response contains access and refresh tokens
+      const { access, refresh } = res.data;
+
+      if (access && refresh) {
+        localStorage.setItem(ACCESS_TOKEN, access);
+        localStorage.setItem(REFRESH_TOKEN, refresh);
+        navigate('/hiring');
       } else {
         navigate('/login');
       }
     } catch (error) {
-      alert(error);
-    } finally {
-      setLoading(false);
+      console.log(
+        'Login error:',
+        error.response ? error.response.data : error.message
+      );
+      alert('Failed to login. Please check your credentials and try again.');
     }
   };
 
