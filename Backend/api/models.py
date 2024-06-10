@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, password=None):
+    def create_user(self, email, first_name, last_name, phone_no, password=None):
         if not email:
             raise ValueError('Users must have an email address.')
         
@@ -13,33 +13,34 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name,
+            phone_no=phone_no,
             )
         
         user.set_password(password)
         user.save(using=self._db)
         return user
     
-    def create_staff(self, email, first_name, last_name, password=None):
-        user = self.create_staff(
-            email,
-            first_name=first_name,
-            last_name=last_name,
-            password=password,
-        )
-        user.is_staff = True
-        user.save(using=self._db)
-        return user
+    # def create_staff(self, email, first_name, last_name, password=None):
+    #     user = self.create_staff(
+    #         email,
+    #         first_name=first_name,
+    #         last_name=last_name,
+    #         password=password,
+    #     )
+    #     user.is_staff = True
+    #     user.save(using=self._db)
+    #     return user
     
-    def create_superuser(self, email, first_name, last_name, password=None):
-        user = self.create_superuser(
-            email,
-            first_name=first_name,
-            last_name=last_name,
-            password=password,
-        )
-        user.is_Admin = True
-        user.save(using=self._db)
-        return user
+    # def create_superuser(self, email, first_name, last_name, password=None):
+    #     user = self.create_superuser(
+    #         email,
+    #         first_name=first_name,
+    #         last_name=last_name,
+    #         password=password,
+    #     )
+    #     user.is_Admin = True
+    #     user.save(using=self._db)
+    #     return user
 
 
 class User(AbstractBaseUser):
@@ -53,8 +54,8 @@ class User(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
 
-    USERNAME_FIELD = 'phone_no'
-    REQUIRED_FIELDS = [first_name, last_name, email]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = [first_name, last_name, email, phone_no]
 
     objects = UserManager()
 
@@ -63,7 +64,6 @@ class User(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
         return True
 
     @property
@@ -73,7 +73,7 @@ class User(AbstractBaseUser):
 
     @property
     def is_admin(self):
-        "Is the user a member of staff?"
+        "Is the user an admin?"
         return self.is_admin   
 
 

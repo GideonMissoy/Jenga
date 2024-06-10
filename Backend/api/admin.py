@@ -2,8 +2,6 @@ from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.core.exceptions import ValidationError
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import User
 
 class UserCreationForm(forms.ModelForm):
@@ -32,41 +30,41 @@ class UserCreationForm(forms.ModelForm):
             return user
 
 
-class UserChangeForm(forms.ModelForm):
-    """"Form for updating users, but replaces the password field with
-    admin's password hash display field."""
-    password = ReadOnlyPasswordHashField()
+# class UserChangeForm(forms.ModelForm):
+#     """"Form for updating users, but replaces the password field with
+#     admin's password hash display field."""
+#     password = ReadOnlyPasswordHashField()
 
-    class Meta:
-        model = User
-        fields = ('email', 'password', 'first_name', 'last_name', 'is_active')
+#     class Meta:
+#         model = User
+#         fields = ('email', 'password', 'first_name', 'last_name', 'is_active')
 
-    def clean_password(self):
-        return self.initial['password']
+#     def clean_password(self):
+#         return self.initial['password']
     
    
-class UserAdmin(BaseUserAdmin):
-    """Forms to add and change user instances."""
-    form = UserChangeForm
-    add_form = UserCreationForm
+# class UserAdmin(BaseUserAdmin):
+#     """Forms to add and change user instances."""
+#     form = UserChangeForm
+#     add_form = UserCreationForm
 
-    list_display = ('email', 'first_name', 'last_name', 'is_admin')
-    list_filter = ['email']
-    fieldsets = [
-        (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
-    ]
+#     list_display = ('email', 'first_name', 'last_name', 'is_admin')
+#     list_filter = ['email']
+#     fieldsets = [
+#         (None, {'fields': ('email', 'password')}),
+#         ('Personal info', {'fields': ('first_name', 'last_name')}),
+#         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
+    # ]
 
-    add_fieldsets = [
-        (None, {
-            'classes': 'wide',
-            'fields': ('email', 'first_name', 'last_name', 'password1', 'password2'),
-        }),
-    ]
-    search_fields = ('email', 'first_name', 'last_name')
-    ordering = ['email']
-    filter_horizontal = ()
+    # add_fieldsets = [
+    #     (None, {
+    #         'classes': 'wide',
+    #         'fields': ('email', 'first_name', 'last_name', 'password1', 'password2'),
+    #     }),
+    # ]
+    # search_fields = ('email', 'first_name', 'last_name')
+    # ordering = ['email']
+    # filter_horizontal = ()
 
-admin.site.register(User, UserAdmin)
+admin.site.register(User)
 admin.site.unregister(Group)
