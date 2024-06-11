@@ -28,14 +28,15 @@ function App() {
     <div>
       <Router>
         <Routes>
-          <Route
+          {/* <Route
             path='/hiring'
             element={
               <ProtectedRoute>
                 <Hiring />
               </ProtectedRoute>
             }
-          />
+          /> */}
+          <Route path='/hiring' element={<Hiring />} />
           <Route index element={<Home />} />
           <Route exact path='/' element={<Home />} />
           <Route path='/contact' element={<Contact />} />
