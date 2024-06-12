@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from '../components/nav';
-import Footer from '../components/footer';
-import CityView from '../assets/cityview.jpg';
-import Tickbrush from '../assets/jengatick.jpg';
+import Nav from '../../components/nav';
+import Footer from '../../components/footer';
 import { Link } from 'react-router-dom';
+import CityView from '../../assets/cityview.jpg';
+import Tickbrush from '../../assets/jengatick.jpg';
 
 function Home() {
   return (

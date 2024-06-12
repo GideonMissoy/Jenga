@@ -13,23 +13,23 @@ function LoggedNav() {
           </Link>
         </div>
         <div className='lg:w-3/6'>
-          <div className='flex items-center'>
+          <div className='flex items-center pl-3 border rounded-full'>
             <input
               type='text'
               placeholder='Search'
-              className='w-full py-2 px-4 border rounded-l-md outline-none focus:ring-2 focus:ring-blue-500'
+              className='w-full outline-none focus:ring-2 pl-3 focus:ring-blue-500'
             />
-            <button className='bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-700 transition duration-300'>
-              <FaSearch />
+            <button className='text-grey-950 p-2 hover:bg-slate-200 rounded-full transition duration-300'>
+              <FaSearch size={25} />
             </button>
           </div>
         </div>
         <div className='lg:w-2/6'>
-          <ul className='flex flex-row justify-end space-x-4'>
+          <ul className='flex flex-row justify-end space-x-6'>
             <li>
               <Link
                 to='/find-work'
-                className='text-gray-800 hover:text-blue-500'
+                className='text-gray-800 bg-green-500 px-5 py-2 rounded-full mr-11'
               >
                 Find Work
               </Link>
@@ -39,7 +39,7 @@ function LoggedNav() {
                 to='/messages'
                 className='text-gray-800 hover:text-blue-500'
               >
-                <FaEnvelope />
+                <FaEnvelope size={22} />
               </Link>
             </li>
             <li>
@@ -47,7 +47,7 @@ function LoggedNav() {
                 to='/notifications'
                 className='text-gray-800 hover:text-blue-500'
               >
-                <FaBell />
+                <FaBell size={22} />
               </Link>
             </li>
             <li>
@@ -57,6 +57,25 @@ function LoggedNav() {
             </li>
           </ul>
         </div>
+      </div>
+      <div>
+        <h1>Aside</h1>
+        <aside className='w-1/4 p-4 bg-gray-100 h-screen'>
+          <ul>
+            <li>
+              <Link to='/dashboard'>Dashboard</Link>
+            </li>
+            <li>
+              <Link to='/settings'>Settings</Link>
+            </li>
+            <li>
+              <Link to='/profile'>Profile</Link>
+            </li>
+            <li>
+              <Link to='/logout'>Logout</Link>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   );
