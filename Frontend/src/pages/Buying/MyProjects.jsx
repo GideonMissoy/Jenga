@@ -1,13 +1,11 @@
 import React from 'react';
 import LoggedNav from '../../components/LoggedNavH';
-import Sidebar from '../../components/Sidebar';
 
-function Projects() {
+function MyProjects() {
   return (
     <div>
       <LoggedNav />
-      <div>
-        <Sidebar />
+      <div className='m-11'>
         <h1>This page will contain all the proejcts created by the user.</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
@@ -19,4 +17,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default MyProjects;

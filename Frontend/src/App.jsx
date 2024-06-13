@@ -10,8 +10,7 @@ import Careers from './pages/Landing/Careers';
 import About from './pages/Landing/About';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
-import Projects from './pages/Buying/Projects';
-import Selling from './pages/Selling/Selling';
+import MyProjects from './pages/Buying/MyProjects';
 import Progress from './pages/Buying/Progress';
 import ProtectedRoute from './components/ProtectedRoute';
 import Supplies from './pages/Buying/Supplies';
@@ -20,6 +19,7 @@ import Proposals from './pages/Selling/Proposals';
 import MyGigs from './pages/Selling/myGigs';
 import MyProducts from './pages/Selling/myProducts';
 import ProjectProgress from './pages/Selling/ProjectProgress';
+import Projects from './pages/Selling/Projects';
 
 function Logout() {
   localStorage.clear();
@@ -36,23 +36,6 @@ function App() {
     <div>
       <Router>
         <Routes>
-          {/* <Route
-            path='/hiring'
-            element={
-              <ProtectedRoute>
-                <Hiring />
-              </ProtectedRoute>
-            }
-          /> */}
-          <Route path='/sell' element={<Selling />} />
-          <Route path='/projects' element={<Projects />} />
-          <Route path='/progress' element={<Progress />} />
-          <Route path='/my-proposals' element={<Proposals />} />
-          <Route path='/gigs' element={<Talents />} />
-          <Route path='/supplies' element={<Supplies />} />
-          <Route path='/my-gigs' element={<MyGigs />} />
-          <Route path='/my-products' element={<MyProducts />} />
-          <Route path='/progress-tracking' element={<ProjectProgress />} />
           <Route index element={<Home />} />
           <Route exact path='/' element={<Home />} />
           <Route path='/contact' element={<Contact />} />
@@ -61,6 +44,17 @@ function App() {
           <Route path='/logout' element={<Logout />} />
           <Route path='/register' element={<RegisterAndLogout />} />
           <Route path='/careers' element={<Careers />} />
+
+          <Route path='/projects' element={<Projects />} />
+          <Route path='/my-proposals' element={<Proposals />} />
+          <Route path='/my-products' element={<MyProducts />} />
+          <Route path='/progress-tracking' element={<ProjectProgress />} />
+          <Route path='/my-gigs' element={<MyGigs />} />
+
+          <Route path='/my-projects' element={<MyProjects />} />
+          <Route path='/progress' element={<Progress />} />
+          <Route path='/gigs' element={<Talents />} />
+          <Route path='/supplies' element={<Supplies />} />
         </Routes>
       </Router>
     </div>

@@ -28,7 +28,7 @@ function LoggedNav() {
           <ul className='flex flex-row justify-end space-x-6'>
             <li>
               <Link
-                to='/find-work'
+                to='/projects'
                 className='text-gray-800 bg-green-500 px-5 py-2 rounded-full mr-11'
               >
                 Find Work
@@ -57,25 +57,6 @@ function LoggedNav() {
             </li>
           </ul>
         </div>
-      </div>
-      <div>
-        <h1>Aside</h1>
-        <aside className='w-1/4 p-4 bg-gray-100 h-screen'>
-          <ul>
-            <li>
-              <Link to='/dashboard'>Dashboard</Link>
-            </li>
-            <li>
-              <Link to='/settings'>Settings</Link>
-            </li>
-            <li>
-              <Link to='/profile'>Profile</Link>
-            </li>
-            <li>
-              <Link to='/logout'>Logout</Link>
-            </li>
-          </ul>
-        </aside>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ function LoggedNavW() {
           <ul className='flex flex-row justify-end space-x-6'>
             <li>
               <Link
-                to='/find-work'
+                to='/my-projects'
                 className='text-gray-800 bg-green-500 px-5 py-2 rounded-full mr-11'
               >
                 Find Talent
