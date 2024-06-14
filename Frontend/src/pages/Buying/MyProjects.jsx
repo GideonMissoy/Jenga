@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LoggedNav from '../../components/LoggedNavH';
 
 function MyProjects() {
+  const [projects, setProjects] = useState([]);
+  const [content, setContent] = useState('');
+  const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
+  const getProjects = () => {
+    api
+      .get('/api/my-projects')
+      .then((res) => res.data)
+      .then((data) => setProjects(data))
+      .catch((err) => alert(err));
+  };
+
   return (
     <div>
       <LoggedNav />
