@@ -4,15 +4,15 @@ from .models import Project, Bid, User, Profile, Reviews
 
 
 class UserSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(required=True)
-    phone_no = serializers.IntegerField(required=True)
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
+    email = serializers.EmailField(required=True)
+    phone_no = serializers.IntegerField(required=True)
     password = serializers.CharField(min_length=6, max_length=15, write_only=True)
 
     class Meta:
         model = User
-        fields = ["email", "phone_no", "first_name", "last_name", "password"]
+        fields = ["first_name", "last_name", "email", "phone_no", "password"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
