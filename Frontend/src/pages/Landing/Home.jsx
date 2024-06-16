@@ -9,24 +9,26 @@ function Home() {
   return (
     <div>
       <Nav />
-      <div className='flex flex-col lg:flex-row bg-slate-300 rounded-3xl text-black mx-3 lg:mx-11 mt-3 lg:mt-11 '>
-        <div className='w-full lg:w-1/2 bg-grey-200 my-3 lg:px-11 flex flex-col justify-center'>
-          <h2 className='text-2xl lg:text-6xl text-green-700 font-bold text-center lg:pt-2 lg:py-9'>
-            Jenga
-          </h2>
-          <p className='text-green-950 lg:text-2xl font-bold text-center py-2'>
-            Where construction dreams meet reality! Whether you're a homeowner
-            embarking on a renovation project or a contractor seeking exciting
-            opportunities, our platform is your one-stop destination.
-          </p>
-        </div>
-        <div className='w-full lg:w-1/2 relative'>
-          <div className='absolute inset-0 bg-black opacity-50 rounded-3xl'></div>
-          <img
-            src='https://plus.unsplash.com/premium_photo-1683121484062-ca19568b0b79?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='Image'
-            className='rounded-3xl'
-          />
+      <div className='bg-slate-300 py-3 lg:py-11 mt-2 lg:mt-7'>
+        <div className='flex flex-col lg:flex-row rounded-3xl text-black mx-3 lg:mx-11 py-1 lg:py-7'>
+          <div className='w-full lg:w-1/2 bg-grey-200 my-3 lg:px-11 flex flex-col justify-center'>
+            <h2 className='text-2xl lg:text-6xl text-green-700 font-bold text-center lg:pt-2 lg:py-9'>
+              Jenga
+            </h2>
+            <p className='text-green-950 lg:text-2xl font-bold text-center py-2'>
+              Where construction dreams meet reality! Whether you're a homeowner
+              embarking on a renovation project or a contractor seeking exciting
+              opportunities, our platform is your one-stop destination.
+            </p>
+          </div>
+          <div className='w-full lg:w-1/2 relative'>
+            <div className='absolute inset-0 bg-black opacity-50 rounded-3xl'></div>
+            <img
+              src='https://plus.unsplash.com/premium_photo-1683121484062-ca19568b0b79?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+              alt='Image'
+              className='rounded-3xl'
+            />
+          </div>
         </div>
       </div>
       <div className='my-5 lg:my-11 mx-3 lg:mx-11'>
@@ -139,57 +141,6 @@ function Home() {
           </p>
         </div>
       </div>
-      <div className='m-3 lg:m-11 '>
-        <div className='lg:mx-11 lg:px-11 text-slate-900'>
-          <h2 className='text-2xl lg:text-5xl text-slate-900 font-bold py-2'>
-            Discover the Jenga Marketplace
-          </h2>
-          <hr />
-          <p className='mt-2 lg:mt-5'>
-            In addition to connecting you with trusted contractors, Jenga also
-            offers an integrated marketplace, revolutionizing the way you source
-            construction materials. Whether you're a homeowner looking for
-            quality supplies or a company wanting to sell your products, the
-            Jenga Marketplace is the ultimate destination for all your
-            construction material needs.
-          </p>
-          <ul className='px-2 lg:px-11'>
-            <li className='py-1 lg:py-3'>
-              <span className='font-bold text-small lg:text-2xl text-green-800'>
-                Wide Selection:
-              </span>
-              <br /> Browse a vast range of construction materials from trusted
-              suppliers. From basic building materials to specialized products,
-              our marketplace has everything you need to complete your project.
-            </li>
-            <li className='py-1 lg:py-3'>
-              <span className='font-bold text-small lg:text-2xl text-green-800'>
-                Competitive Pricing:
-              </span>
-              <br /> Enjoy competitive pricing and exclusive deals that help you
-              stay within budget without compromising on quality.
-            </li>
-            <li className='py-1 lg:py-3'>
-              <span className='font-bold text-small lg:text-2xl text-green-800'>
-                Verified Sellers:
-              </span>
-              <br /> All sellers on our marketplace are thoroughly vetted to
-              ensure they meet our standards of reliability and quality. Buy
-              with confidence knowing that you’re getting the best materials
-              available.
-            </li>
-            <li className='py-1 lg:py-3'>
-              <span className='font-bold text-small lg:text-2xl text-green-800'>
-                Easy Transactions:
-              </span>
-              <br /> Our seamless purchasing process makes it easy to find,
-              compare, and buy materials, saving you time and effort. Secure
-              payment options and transparent shipping details ensure a
-              hassle-free experience.
-            </li>
-          </ul>
-        </div>
-      </div>
       <div className='mb-5 lg:mb-11 mx-3 lg:mx-11'>
         <h2 className='text-2xl lg:text-5xl text-slate-800 font-bold'>
           Your Ultimate Destination for Quality and Reliability
@@ -253,6 +204,81 @@ function Home() {
               smooth and satisfactory. From the initial search to project
               completion, Jenga supports you every step of the way.
             </p>
+          </div>
+        </div>
+      </div>
+      <div className='m-3 lg:m-11 '>
+        <div className='lg:mx-11 lg:px-11 text-slate-900'>
+          <h2 className='text-2xl lg:text-5xl text-slate-900 font-bold py-2'>
+            Discover the Jenga Marketplace
+          </h2>
+          <hr />
+          <p className='mt-2 lg:mt-5'>
+            In addition to connecting you with trusted contractors, Jenga also
+            offers an integrated marketplace, revolutionizing the way you source
+            construction materials. Whether you're a homeowner looking for
+            quality supplies or a company wanting to sell your products, the
+            Jenga Marketplace is the ultimate destination for all your
+            construction material needs.
+          </p>
+          <div className='flex flex-col lg:flex-row bg-slate-100 rounded-2xl mt-2 lg:mt-5'>
+            <div className='w-full lg:w-2/3 flex flex-col justify-center px-2 lg:px-8 py-2 lg:py-7'>
+              <ul>
+                <li className='py-1 lg:py-3'>
+                  <span className='font-bold text-small lg:text-2xl text-green-800'>
+                    Wide Selection:
+                  </span>
+                  <br /> Browse a vast range of construction materials from
+                  trusted suppliers. From basic building materials to
+                  specialized products, our marketplace has everything you need
+                  to complete your project.
+                </li>
+                <li className='py-1 lg:py-3'>
+                  <span className='font-bold text-small lg:text-2xl text-green-800'>
+                    Competitive Pricing:
+                  </span>
+                  <br /> Enjoy competitive pricing and exclusive deals that help
+                  you stay within budget without compromising on quality.
+                </li>
+                <li className='py-1 lg:py-3'>
+                  <span className='font-bold text-small lg:text-2xl text-green-800'>
+                    Verified Sellers:
+                  </span>
+                  <br /> All sellers on our marketplace are thoroughly vetted to
+                  ensure they meet our standards of reliability and quality. Buy
+                  with confidence knowing that you’re getting the best materials
+                  available.
+                </li>
+                <li className='py-1 lg:py-3'>
+                  <span className='font-bold text-small lg:text-2xl text-green-800'>
+                    Easy Transactions:
+                  </span>
+                  <br /> Our seamless purchasing process makes it easy to find,
+                  compare, and buy materials, saving you time and effort. Secure
+                  payment options and transparent shipping details ensure a
+                  hassle-free experience.
+                </li>
+              </ul>
+            </div>
+            <div className='w-full lg:w-1/3 p-2 lg:p-11 flex flex-col justify-center align-items '>
+              <h1 className='mb-3 lg:mb-7 text-center text-slate-900 text-2xl lg:text-3xl font-bold '>
+                Shopping for supplies made{' '}
+                <span className='lg:text-5xl'>Easier</span>
+              </h1>
+              <img
+                src='https://plus.unsplash.com/premium_photo-1682144851955-22dbdc00a1a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pbi1zYW1lLXNlcmllc3wyfHx8ZW58MHx8fHx8'
+                alt='Photo of a man shopping.'
+                className='rounded-3xl'
+              />
+              <div className='my-3 lg:my-5 text-center'>
+                <Link
+                  to='/supplies'
+                  className='bg-green-500 hover:bg-green-700 text-black font-bold py-2 px-3 lg:px-5 font-bold rounded-full'
+                >
+                  Explore
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

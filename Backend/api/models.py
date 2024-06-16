@@ -8,6 +8,12 @@ class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, phone_no, password=None):
         if not email:
             raise ValueError('Users must have an email address.')
+        if not first_name:
+            raise ValueError('Users must have a first name')
+        if not last_name:
+            raise ValueError('Users must have a last name')
+        if not phone_no:
+            raise ValueError('Users must have a phone number')
         
         user = self.model(
             email=self.normalize_email(email),
@@ -20,31 +26,30 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-    # def create_staff(self, email, first_name, last_name, password=None):
-    #     user = self.create_staff(
-    #         email,
-    #         first_name=first_name,
-    #         last_name=last_name,
-    #         password=password,
-    #     )
-    #     user.is_staff = True
-    #     user.save(using=self._db)
-    #     return user
+    def create_staff(self, email, first_name, last_name, phone_no, password=None):
+        user = self.create_staff(
+            email,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+        )
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
     
-    # def create_superuser(self, email, first_name, last_name, password=None):
-    #     user = self.create_superuser(
-    #         email,
-    #         first_name=first_name,
-    #         last_name=last_name,
-    #         password=password,
-    #     )
-    #     user.is_Admin = True
-    #     user.save(using=self._db)
-    #     return user
+    def create_superuser(self, email, first_name, last_name, phone_no, password=None):
+        user = self.create_superuser(
+            email,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+        )
+        user.is_Admin = True
+        user.save(using=self._db)
+        return user
 
 
 class User(AbstractBaseUser):
-    username = None
     first_name = models.CharField(max_length=75)
     last_name = models.CharField(max_length=75)
     email = models.EmailField(verbose_name='email_address', max_length=75, unique=True, null=False)
@@ -54,8 +59,7 @@ class User(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [first_name, last_name, email, phone_no]
+    REQUIRED_FIELDS = ['email', 'first_name', 'last_name', 'phone_no']
 
     objects = UserManager()
 

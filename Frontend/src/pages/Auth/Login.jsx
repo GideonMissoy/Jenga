@@ -4,35 +4,31 @@ import { useNavigate } from 'react-router-dom';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants';
 import { Link } from 'react-router-dom';
 import { FaLock, FaWindowClose, FaEnvelope } from 'react-icons/fa';
+import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError(null);
 
     try {
-      const res = await api.post(`${import.meta.env.VITE_API_URL}/token/`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/token/`, {
         email: email,
         password: password,
       });
 
-      // Assuming that successful response contains access and refresh tokens
-      const { access, refresh } = res.data;
-
-      if (access && refresh) {
-        localStorage.setItem(ACCESS_TOKEN, access);
-        localStorage.setItem(REFRESH_TOKEN, refresh);
-        navigate('/hiring');
-      } else {
-        navigate('/login');
-      }
+      console.log('Login successful:', res.data);
+      navigate('/my-projects/');
     } catch (error) {
       console.log(
         'Login error:',
-        error.response ? error.response.data : error.message
+        error.response ? error.res.data : error.message
       );
       alert('Failed to login. Please check your credentials and try again.');
     }
@@ -89,6 +85,11 @@ function Login() {
                   Login
                 </button>
               </div>
+              {error && (
+                <div className='error'>
+                  {error.email ? error.email[0] : 'An error occurred'}
+                </div>
+              )}
               <div className='text-center'>
                 <p className='text-sm'>
                   Don't have an account?
