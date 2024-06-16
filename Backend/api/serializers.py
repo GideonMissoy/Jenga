@@ -1,6 +1,40 @@
 from django.db.models.fields import SlugField
 from rest_framework import serializers
-from .models import Project, Bid, User, Profile, Reviews
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.contrib.auth import authenticate
+from .models import *
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    username_field = 'email'
+
+    def validate(self, attrs):
+        password = attrs.get("password")
+        user = authenticate(
+            request=self.context.get('request'),
+            username=attrs.get("email"),
+            password=password
+        )
+
+        if user is None:
+            raise serializers.ValidationError(
+                'No active account found with the given credentials'
+            )
+
+        refresh = self.get_token(user)
+
+        data = {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }
+
+        # Add extra responses here
+        data['email'] = user.email
+        data['first_name'] = user.first_name
+        data['last_name'] = user.last_name
+        data['phone_no'] = user.phone_no
+
+        return data
 
 
 class UserSerializer(serializers.ModelSerializer):
