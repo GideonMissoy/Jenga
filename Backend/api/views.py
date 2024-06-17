@@ -29,7 +29,8 @@ class CreateUserView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-class ProjectListCreate(generics.ListCreateAPIView):
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticated]
 
@@ -37,9 +38,10 @@ class ProjectListCreate(generics.ListCreateAPIView):
         """Returns only the projects created by the user"""
         user = self.request.user
         return Project.objects.filter(user=user)
-    
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
 
 class ProjectDelete(generics.DestroyAPIView):
     serializer_class = ProjectSerializer
