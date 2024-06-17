@@ -9,6 +9,7 @@ import {
   FaEnvelope,
   FaPhone,
 } from 'react-icons/fa';
+import LoggedNav from '../../components/LoggedNavH';
 
 function Register() {
   const [firstName, setFirstName] = useState('');

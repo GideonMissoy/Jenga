@@ -20,6 +20,7 @@ import MyGigs from './pages/Selling/myGigs';
 import MyProducts from './pages/Selling/myProducts';
 import ProjectProgress from './pages/Selling/ProjectProgress';
 import Projects from './pages/Selling/Projects';
+import CreateProject from './pages/Buying/CreateProject';
 
 function Logout() {
   localStorage.clear();
@@ -52,6 +53,7 @@ function App() {
           <Route path='/my-gigs' element={<MyGigs />} />
 
           <Route path='/my-projects' element={<MyProjects />} />
+          <Route path='/create-project' element={<CreateProject />} />
           <Route path='/progress' element={<Progress />} />
           <Route path='/gigs' element={<Talents />} />
           <Route path='/supplies' element={<Supplies />} />
