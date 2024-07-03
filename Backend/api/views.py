@@ -1,33 +1,10 @@
-from django.shortcuts import render
-from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .models import Project, Bid
-from .serializers import UserSerializer, ProjectSerializer, BidSerializer
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from .serializers import ProjectSerializer, BidSerializer
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
-from rest_framework.views import APIView
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework import status
-from .serializers import CustomTokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 
-class CustomTokenObtainPairView(TokenObtainPairView):
-    serializer_class = CustomTokenObtainPairSerializer
-
-class CreateUserView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request, format='json'):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            print(user)
-            if user:
-                json = serializer.data
-                return Response(json, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
 
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
