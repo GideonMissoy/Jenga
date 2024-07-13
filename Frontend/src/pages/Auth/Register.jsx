@@ -2,45 +2,43 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../api';
-import {
-  FaUser,
-  FaLock,
-  FaWindowClose,
-  FaEnvelope,
-  FaPhone,
-} from 'react-icons/fa';
-import LoggedNav from '../../components/LoggedNavH';
+import { FaUser, FaLock, FaWindowClose, FaEnvelope } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password2, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
+    if (password !== password2) {
       console.error("Passwords don't match");
       return;
     }
     // Process to handle the registration logic
     try {
       let response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/user/register/`,
+        `${import.meta.env.VITE_API_URL}/v1/users/auth/register/`,
         {
           first_name: firstName,
           last_name: lastName,
           email: email,
-          phone_no: phoneNumber,
           password: password,
+          password2: password2,
         }
       );
+      const res = response.data;
       console.log(response);
-      navigate('/login');
+      if (response.status === 201) {
+        navigate('/verify-email');
+        toast.success(res.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -94,17 +92,6 @@ function Register() {
               </div>
               <div className='flex flex-row items-center border border-gray-300 rounded-md px-3 py-2'>
                 <input
-                  type='text'
-                  placeholder='Phone Number'
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  required
-                  className='flex-grow outline-none'
-                />
-                <FaPhone className='ml-2' />
-              </div>
-              <div className='flex flex-row items-center border border-gray-300 rounded-md px-3 py-2'>
-                <input
                   type='password'
                   placeholder='Password'
                   value={password}
@@ -118,7 +105,7 @@ function Register() {
                 <input
                   type='password'
                   placeholder='Confirm Password'
-                  value={confirmPassword}
+                  value={password2}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   className='flex-grow outline-none'

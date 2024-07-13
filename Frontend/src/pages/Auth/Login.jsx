@@ -5,32 +5,43 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants';
 import { Link } from 'react-router-dom';
 import { FaLock, FaWindowClose, FaEnvelope } from 'react-icons/fa';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(null);
-
-    try {
-      const res = await api.post(`${import.meta.env.VITE_API_URL}/token/`, {
-        email: email,
-        password: password,
-      });
-
-      console.log('Login successful:', res.data);
-      navigate('/my-projects/');
-    } catch (error) {
-      console.log(
-        'Login error:',
-        error.response ? error.res.data : error.message
+    if (!email || !password) {
+      setError('Please enter all credentials to continue!');
+    } else {
+      setIsLoading(true);
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/v1/users/auth/login/`,
+        {
+          email: email,
+          password: password,
+        }
       );
-      alert('Failed to login. Please check your credentials and try again.');
+      const response = res.data;
+      console.log(response);
+      setIsLoading(false);
+      const user = {
+        email: response.email,
+        names: response.full_name,
+      };
+      if (res.status === 200) {
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('access', JSON.stringify(response.access_token));
+        localStorage.setItem('refresh', JSON.stringify(response.refresh_token));
+        navigate('/my-projects');
+        toast.success('Login Successful');
+      }
     }
   };
 
@@ -45,6 +56,7 @@ function Login() {
           </div>
           <form onSubmit={handleLogin} className='flex flex-col'>
             <h1 className='text-2xl font-bold mb-4'>Login</h1>
+            {isLoading && <p className='text-red'>Loading...</p>}
             <div className='space-y-4'>
               <div className='flex flex-row items-center border border-gray-300 rounded-md px-3 py-2'>
                 <input

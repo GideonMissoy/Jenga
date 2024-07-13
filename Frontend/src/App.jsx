@@ -4,12 +4,15 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/Landing/Home';
 import Contact from './pages/Landing/Contact';
 import Careers from './pages/Landing/Careers';
 import About from './pages/Landing/About';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import ForgotPassword from './pages/Auth/ForgotPassword';
+import VerifyEmail from './pages/Auth/VerifyEmail';
 import MyProjects from './pages/Buying/MyProjects';
 import Progress from './pages/Buying/Progress';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -36,6 +39,7 @@ function App() {
   return (
     <div>
       <Router>
+        <ToastContainer />
         <Routes>
           <Route index element={<Home />} />
           <Route exact path='/' element={<Home />} />
@@ -44,6 +48,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/logout' element={<Logout />} />
           <Route path='/register' element={<RegisterAndLogout />} />
+          <Route path='/reset-password' element={<ForgotPassword />} />
+          <Route path='/verify-email' element={<VerifyEmail />} />
           <Route path='/careers' element={<Careers />} />
 
           <Route path='/projects' element={<Projects />} />

@@ -1,9 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FaEnvelope, FaBell, FaSearch } from 'react-icons/fa';
 import Logo from '../assets/logo.png';
+import { toast } from 'react-toastify';
 
 function LoggedNav() {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMouseEnter = () => {
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const refresh = JSON.parse(localStorage.getItem('refresh'));
+
+  const handleLogout = async () => {
+    const res = await api.post('/api/v1/users/auth/logout/', {
+      refresh_token: refresh,
+    });
+    if (res.status === 200) {
+      localStorage.removeItem('access');
+      localStorage.removeItem('refresh');
+      localStorage.removeItem('user');
+      navigate('/');
+      toast.success('You have been logged out successfully.');
+    }
+  };
+
   return (
     <div>
       <div className='flex flex-row justify-between items-center px-2 py-2 lg:px-11 lg:py-2 bg-white'>
@@ -50,10 +81,47 @@ function LoggedNav() {
                 <FaBell size={22} />
               </Link>
             </li>
-            <li>
-              <Link to='/profile' className='text-gray-800 hover:text-blue-500'>
+            <li
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className='relative'
+            >
+              <Link
+                to='#'
+                onClick={toggleDropdown}
+                className='text-gray-800 hover:text-blue-500'
+              >
                 Profile Photo
               </Link>
+              {isOpen && (
+                <ul className='absolute bg-white border border-gray-200 shadow-md mt-2 w-48'>
+                  <li>
+                    <Link
+                      to='/profile'
+                      className='block px-4 py-2 text-gray-800 hover:bg-gray-100'
+                    >
+                      Profile Photo
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to='/settings'
+                      className='block px-4 py-2 text-gray-800 hover:bg-gray-100'
+                    >
+                      Settings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to='/logout'
+                      onClick={handleLogout}
+                      className='block px-4 py-2 text-gray-800 hover:bg-gray-100'
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </li>
           </ul>
         </div>
