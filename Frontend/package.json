@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
+    "dayjs": "^1.11.11",
     "jwt-decode": "^4.0.0",
     "lucide": "^0.394.0",
     "lucide-react": "^0.395.0",

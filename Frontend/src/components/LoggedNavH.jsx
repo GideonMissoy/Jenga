@@ -34,7 +34,7 @@ function LoggedNav() {
       toast.success('You have been logged out successfully.');
     }
   };
-
+ 
   return (
     <div>
       <div className='flex flex-row justify-between items-center px-2 py-2 lg:px-11 lg:py-2 bg-white'>
